@@ -16,7 +16,7 @@
 	"dependencies": {
 	},
 	"devDependencies": {
-		"@gongt/single-dog": "^1.1.0",
+		"@gongt/single-dog": "^1.1.111",
 		"@types/node": "^10.9.4",
 		"chokidar": "^2.0.4",
 		"glob": "^7.1.3",

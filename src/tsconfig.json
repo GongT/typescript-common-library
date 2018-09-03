@@ -34,5 +34,6 @@
 	},
 	"exclude": [
 		"**/_*.ts"
-	]
+	],
+	"extends": "/data/DevelopmentRoot/projects/typescript-common-library/node_modules/@gongt/single-dog/package/tsconfig.json"
 }
