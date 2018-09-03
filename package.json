@@ -1,0 +1,35 @@
+{
+	"name": "@gongt/common",
+	"scripts": {
+		"watch": "rollup -w -c build/rollup.config.js",
+		"build": "rollup -c build/rollup.config.js",
+		"lint": "tslint -c build/tslint.json 'src'"
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.module.js",
+	"version": "0.0.1",
+	"description": "a big hole",
+	"engines": {
+		"node": ">7",
+		"npm": ">4"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"@gongt/single-dog": "^1.1.0",
+		"@types/node": "^10.9.4",
+		"chokidar": "^2.0.4",
+		"glob": "^7.1.3",
+		"rollup": "^0.65.0",
+		"rollup-plugin-commonjs": "^9.1.6",
+		"rollup-plugin-node-resolve": "^3.3.0",
+		"rollup-plugin-typescript2": "^0.17.0",
+		"typescript": "^3.0.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/GongT/typescript-common-library.git"
+	},
+	"author": "GongT <gongteng524702837@gmail.com>",
+	"license": "MIT"
+}
