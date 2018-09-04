@@ -15,6 +15,7 @@ export class CallbackList<VALIST extends any[]> {
 		if (found !== -1) {
 			return this.list.splice(found, 1);
 		}
+		return [];
 	}
 
 	run(...argument: VALIST) {

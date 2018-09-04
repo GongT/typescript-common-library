@@ -1,4 +1,4 @@
-export function objectPath(obj: object, path: string): any {
+export function objectPath(obj: any, path: string): any {
 	path.split('.').every((name) => {
 		return obj = obj[name];
 	});

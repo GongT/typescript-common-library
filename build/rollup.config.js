@@ -2,7 +2,6 @@ import typescript from 'rollup-plugin-typescript2';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import { resolve } from 'path';
-import * as glob from 'glob';
 
 const OPWD = process.cwd();
 
@@ -24,6 +23,7 @@ const watch = {
 
 const plugins = [
 	nodeResolve(),
+	commonjs(),
 	typescript({
 		tsconfig,
 		tsconfigOverride: {
@@ -32,7 +32,6 @@ const plugins = [
 			},
 		},
 	}),
-	commonjs(),
 ];
 
 const mainFile = pkg.main || resolve('dist/main.js');

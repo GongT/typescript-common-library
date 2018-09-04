@@ -1,3 +1,5 @@
+import { isomorphicGlobal } from 'environment/isomorphicGlobal';
+
 export type Unhide = () => void;
 
 export function hideGlobal(varName: string, newValue: any): Unhide {

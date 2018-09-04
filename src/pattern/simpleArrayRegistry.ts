@@ -8,20 +8,20 @@ export function RegexpFinder(this: RegExp[], item: RegExp): number {
 export class SimpleArrayRegistry<Type = string> {
 	protected registry: Type[];
 	private finder: MyFinder<Type>;
-	
+
 	constructor(finder: Finder<Type> = Array.prototype.indexOf) {
 		this.registry = [];
 		this.setFinder(finder);
 	}
-	
+
 	setFinder(finder: Finder<Type>) {
 		this.finder = finder.bind(this.registry);
 	}
-	
+
 	has(item: Type): boolean {
 		return this.finder(item) !== -1;
 	}
-	
+
 	add(item: Type): boolean {
 		const index = this.finder(item);
 		if (index === -1) {
@@ -31,11 +31,11 @@ export class SimpleArrayRegistry<Type = string> {
 			return false;
 		}
 	}
-	
+
 	addAll(items: Type[]): Type[] {
 		return items.filter(e => this.add(e));
 	}
-	
+
 	remove(item: Type): boolean {
 		const index = this.finder(item);
 		if (index === -1) {
@@ -45,19 +45,19 @@ export class SimpleArrayRegistry<Type = string> {
 			return true;
 		}
 	}
-	
+
 	removeAll(items: Type[]): Type[] {
 		return items.filter(e => this.remove(e));
 	}
-	
+
 	get length() {
 		return this.registry.length;
 	}
-	
+
 	[Symbol.iterator](): Iterator<Type> {
 		return this.registry[Symbol.iterator]();
 	}
-	
+
 	toArray() {
 		return this.registry.slice();
 	}

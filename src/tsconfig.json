@@ -1,4 +1,5 @@
 {
+	"extends": "../node_modules/@gongt/single-dog/package/tsconfig.json",
 	"compileOnSave": true,
 	"compilerOptions": {
 		"module": "commonjs",
@@ -7,33 +8,14 @@
 			"es5",
 			"es6",
 			"es7",
+			"dom",
 			"esnext"
 		],
-		"moduleResolution": "node",
-		"declaration": true,
-		"noEmitOnError": true,
-		"noImplicitThis": true,
-		"noImplicitAny": false,
-		"removeComments": false,
-		"preserveConstEnums": true,
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"forceConsistentCasingInFileNames": true,
-		"isolatedModules": false,
-		"pretty": false,
-		"sourceMap": true,
-		"inlineSourceMap": false,
-		"inlineSources": false,
-		"jsx": "react",
-		"stripInternal": true,
 		"outDir": "../dist",
 		"rootDir": ".",
-		"baseUrl": ".",
-		"paths": {},
-		"types": []
+		"baseUrl": "."
 	},
 	"exclude": [
 		"**/_*.ts"
-	],
-	"extends": "/data/DevelopmentRoot/projects/typescript-common-library/node_modules/@gongt/single-dog/package/tsconfig.json"
+	]
 }

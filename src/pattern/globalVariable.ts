@@ -7,10 +7,10 @@ export class GlobalVariable<IShape = any> {
 	static getObject(parent: any) {
 		if (!parent['__PAGE_DATA__']) {
 			Object.defineProperty(parent, '__PAGE_DATA__', {
-				value: new Map,
+				value       : new Map,
 				configurable: false,
-				enumerable: false,
-				writable: false,
+				enumerable  : false,
+				writable    : false,
 			});
 		}
 		return parent['__PAGE_DATA__'];
@@ -25,10 +25,10 @@ export class GlobalVariable<IShape = any> {
 		this.data = GlobalVariable.getObject(parent);
 
 		Object.defineProperty(this, 'parent', {
-			value: parent,
+			value       : parent,
 			configurable: false,
-			enumerable: false,
-			writable: false,
+			enumerable  : false,
+			writable    : false,
 		});
 	}
 
@@ -69,7 +69,7 @@ export class GlobalVariable<IShape = any> {
 })(${this.toJSON()});`;
 	}
 
-	inspect(depth, opt) {
+	inspect(depth: any, opt: any) {
 		return 'GlobalVariable'
 		       + '[<' + (typeof this.parent) + ' ' + (this.parent.constructor.name) + '>] '
 		       + JSON.stringify(this.data, null, 2);

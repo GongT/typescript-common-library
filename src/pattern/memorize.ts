@@ -1,4 +1,4 @@
-import { nameFuncAs, nameOfConstructor } from 'function/nameOf';
+import { nameFuncAs, nameOfConstructor } from 'function/nameOfFunction';
 import { isNoopFunc } from 'function/isNoopFunc';
 
 declare const console: any;
