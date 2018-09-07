@@ -1,12 +1,13 @@
 {
 	"name": "@gongt/common",
 	"scripts": {
-		"watch": "rollup -w -c build/rollup.config.js",
-		"build": "rollup -c build/rollup.config.js",
+		"watch": "export-all-in-one src && rollup -w -c build/rollup.config.js",
+		"build": "export-all-in-one src && rollup -c build/rollup.config.js",
 		"lint": "tslint -c build/tslint.json 'src'"
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.module.js",
+	"typings": "./dist/_index.d.ts",
 	"version": "0.0.1",
 	"description": "a big hole",
 	"engines": {
@@ -15,7 +16,8 @@
 	},
 	"dependencies": {},
 	"devDependencies": {
-		"@gongt/single-dog": "^1.1.111",
+		"@gongt/export-all-in-one": "^1.0.2",
+		"@gongt/single-dog": "^1.1.1111",
 		"@types/chai": "^4.1.4",
 		"@types/node": "^10.9.4",
 		"chai": "^4.1.2",

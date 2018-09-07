@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "module": "amd",
+        "emitDeclarationOnly": true,
+        "outFile": "../dist/_index"
+    },
+    "exclude": [],
+    "include": [],
+    "files": [
+        "./_index.ts"
+    ]
+}

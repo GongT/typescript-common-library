@@ -44,7 +44,7 @@ const commonOutput = {
 
 const config = [
 	{
-		input: 'src/index.ts',
+		input: 'src/_index.ts',
 		plugins,
 		external,
 		watch,
