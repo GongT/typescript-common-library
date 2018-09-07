@@ -1,4 +1,4 @@
-import { Deferred } from 'pattern/deferred';
+import { Deferred } from 'async/deferred';
 
 export type Timeout = Promise<void> & {kill(asSuccess?: boolean): void};
 
