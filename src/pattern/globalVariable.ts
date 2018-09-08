@@ -1,19 +1,30 @@
+import { hiddenProperty } from 'objects/hiddenProperty';
+import { symbolCode } from 'strings/symbolCode';
+import { InspectContent } from 'objects/inspect';
+import { StringTag } from 'objects/stringTag';
+
 declare const window: any;
 
+const symbol = Symbol.for('@gongt/__PAGE_DATA__');
+
+@StringTag('GlobalVariable')
+@InspectContent<GlobalVariable>(function () {
+	return 'GlobalVariable'
+	       + '[<' + (typeof this.parent) + ' ' + (this.parent.constructor.name) + '>] '
+	       + JSON.stringify(this.data, null, 2);
+})
 export class GlobalVariable<IShape = any> {
 	private data: Map<keyof IShape, any>;
 	private parent: any;
 
+	static symbol = symbol;
+	private symbol: symbol = symbol;
+
 	static getObject(parent: any) {
-		if (!parent['__PAGE_DATA__']) {
-			Object.defineProperty(parent, '__PAGE_DATA__', {
-				value       : new Map,
-				configurable: false,
-				enumerable  : false,
-				writable    : false,
-			});
+		if (!parent[symbol]) {
+			hiddenProperty(parent, symbol, new Map);
 		}
-		return parent['__PAGE_DATA__'];
+		return parent[symbol];
 	}
 
 	constructor(parent?: any) {
@@ -24,12 +35,7 @@ export class GlobalVariable<IShape = any> {
 		}
 		this.data = GlobalVariable.getObject(parent);
 
-		Object.defineProperty(this, 'parent', {
-			value       : parent,
-			configurable: false,
-			enumerable  : false,
-			writable    : false,
-		});
+		hiddenProperty(this, 'parent', parent);
 	}
 
 	set<T extends keyof IShape>(k: T, v: IShape[T]) {
@@ -54,29 +60,15 @@ export class GlobalVariable<IShape = any> {
 	}
 
 	toString() {
-		return `((data) => {
-	if(!window.__PAGE_DATA__) {
-		Object.defineProperty(window, '__PAGE_DATA__', {
-			value: new Map,
-			configurable: false,
-			enumerable: false,
-			writable: false,
-		});
+		return `((symbol, hiddenProperty, data) => {
+	if(!window[symbol]) {
+		hiddenProperty(window, symbol, new Map);
 	}
+	const o = window[symbol];
 	for (const [k, v] of Object.entries(data)) {
-		window.__PAGE_DATA__.set(k, v);
+		o.set(k, v);
 	}
-})(${this.toJSON()});`;
-	}
-
-	inspect(depth: any, opt: any) {
-		return 'GlobalVariable'
-		       + '[<' + (typeof this.parent) + ' ' + (this.parent.constructor.name) + '>] '
-		       + JSON.stringify(this.data, null, 2);
-	}
-
-	[Symbol.toStringTag]() {
-		return 'GlobalVariable';
+})(${symbolCode(this.symbol, true)}, ${hiddenProperty.toString()}, ${this.toJSON()});`;
 	}
 }
 

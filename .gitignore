@@ -4,6 +4,7 @@ jspm_packages/
 *.log
 dist/
 *.tgz
+src/_index.ts
 
 .idea/*
 !.idea/*.iml

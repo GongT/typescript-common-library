@@ -1,41 +1,15 @@
-export function objectPath(obj: any, path: string): any;
-export function objectPath(obj: any, path: string, value: any): void;
+import { expect, } from 'chai';
+import { objectPath } from 'objects/objectPath';
 
-export function objectPath(obj: any, path: string, value?: any): any {
-	if (typeof obj !== 'object' || !obj) {
-		throw new TypeError('first argument must be valid object');
-	}
-	let pathArr = path.split('.');
-	let name: string;
-	if (arguments.length === 3) {
-		if (!path) {
-			throw new Error('path cannot be empty when set value');
-		}
-		while (pathArr.length > 0) {
-			name = pathArr.shift();
+const obj: any = {};
 
-			if (obj.hasOwnProperty(name)) {
-				if (typeof obj[name] === 'object' && obj[name]) {
-					obj = obj[name];
-				} else {
-					throw new TypeError(`Cannot set property ${name} on ${path.replace(pathArr.join('.'), '')}`);
-				}
-			} else {
-				obj = obj[name] = {};
-			}
-		}
-		obj[name] = value;
-	} else {
-		while (pathArr.length > 0) {
-			name = pathArr.shift();
-			obj = obj[name];
-			if (obj === undefined) {
-				return;
-			}
-			if (obj === null && pathArr.length > 0) {
-				return;
-			}
-		}
-		return obj;
-	}
-}
+objectPath(obj, 'a.b.c', 'xxx');
+
+expect(obj).to.haveOwnProperty('a').haveOwnProperty('b').haveOwnProperty('c').to.eq('xxx');
+
+expect(objectPath(obj, 'a.b.c')).to.equals('xxx');
+expect(objectPath(obj, 'a.b')).to.haveOwnProperty('c');
+expect(objectPath(obj, 'a.x')).is.undefined;
+
+
+

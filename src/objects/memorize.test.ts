@@ -1,4 +1,4 @@
-import { memorize } from 'pattern/memorize';
+import { memorize } from 'objects/memorize';
 
 declare const console: any;
 

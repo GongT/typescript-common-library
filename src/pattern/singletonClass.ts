@@ -1,3 +1,5 @@
+import { hiddenProperty } from 'objects/hiddenProperty';
+
 const singleton = Symbol('@@singleton');
 
 export function Singleton(preventDuplicateNew = false) {
@@ -11,12 +13,7 @@ export function Singleton(preventDuplicateNew = false) {
 					return (cls as any)[singleton];
 				}
 				const newInstance = new target(...argArray);
-				Object.defineProperty(cls, singleton, {
-					value       : newInstance,
-					writable    : false,
-					configurable: false,
-					enumerable  : false,
-				});
+				hiddenProperty(cls, singleton, newInstance);
 				return newInstance;
 			},
 		});

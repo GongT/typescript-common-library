@@ -1,16 +1,16 @@
-import { Deferred } from 'pattern/deferred';
+import { Deferred } from 'async/deferred';
 
 export class WaitCounter {
 	private count = 0;
 	private done: boolean;
 	private locked: boolean;
-	private promise: Deferred<void>;
+	private dfd: Deferred<void>;
 	private started: boolean = false;
 
 	constructor(private title: string) {
 		this.done = false;
-		this.promise = new Deferred<void>();
-		this.promise.finally(() => {
+		this.dfd = new Deferred<void>();
+		this.dfd.promise().finally(() => {
 			this.done = true;
 		});
 	}
@@ -21,7 +21,7 @@ export class WaitCounter {
 		}
 		this.locked = true;
 		if (this.count === 0) {
-			return this.promise.resolve(null);
+			return this.dfd.resolve(null);
 		}
 	}
 
@@ -31,7 +31,7 @@ export class WaitCounter {
 		}
 		this.count--;
 		if (this.count === 0) {
-			return this.promise.resolve(void 0);
+			return this.dfd.resolve(void 0);
 		}
 	}
 
@@ -46,12 +46,12 @@ export class WaitCounter {
 	}
 
 	wait(): Promise<void> {
-		return this.promise;
+		return this.dfd.promise();
 	}
 
 	protected checkDone() {
 		if (this.done) {
-			this.promise.reject(new Error(`WaitContainer[${this.title}] is already done.`));
+			this.dfd.reject(new Error(`WaitContainer[${this.title}] is already done.`));
 			return true;
 		}
 		return false;
@@ -59,7 +59,7 @@ export class WaitCounter {
 
 	protected checkLock() {
 		if (!this.locked) {
-			this.promise.reject(new TypeError(`WaitContainer[${this.title}] must not pop before lock.`));
+			this.dfd.reject(new TypeError(`WaitContainer[${this.title}] must not pop before lock.`));
 			return true;
 		}
 		return false;

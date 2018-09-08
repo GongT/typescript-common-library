@@ -2,7 +2,7 @@
 	"extends": "../node_modules/@gongt/single-dog/package/tsconfig.json",
 	"compileOnSave": true,
 	"compilerOptions": {
-		"module": "commonjs",
+		"module": "esnext",
 		"target": "ESNext",
 		"lib": [
 			"es5",
@@ -11,11 +11,13 @@
 			"dom",
 			"esnext"
 		],
+		"noEmit": true,
 		"outDir": "../dist",
 		"rootDir": ".",
 		"baseUrl": "."
 	},
 	"exclude": [
-		"**/_*.ts"
+		"**/_*.ts",
+		"**/*.test.ts"
 	]
 }

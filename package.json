@@ -2,8 +2,9 @@
 	"name": "@gongt/common",
 	"scripts": {
 		"watch": "export-all-in-one src && rollup -w -c build/rollup.config.js",
-		"build": "export-all-in-one src && rollup -c build/rollup.config.js",
-		"lint": "tslint -c build/tslint.json 'src'"
+		"build": "bash build/build.sh",
+		"lint": "tslint -c build/tslint.json 'src'",
+		"test:build": "rollup -c build/rollup.tests.js"
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.module.js",

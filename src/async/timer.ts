@@ -1,22 +1,26 @@
 import { Deferred } from 'async/deferred';
+import { IRejector, IResolver } from 'async/promise';
+import { Cancelable, CancelError } from 'async/cancelable';
 
-export type Timeout = Promise<void> & {kill(asSuccess?: boolean): void};
+export class Timeout extends Deferred<void, CancelError> implements Cancelable {
+	private to: number;
 
-export function timeout(ms: number): Timeout {
-	const to: number = setTimeout(() => {
-		ret.resolve(void 0);
-	}, ms);
+	constructor(protected readonly timeoutMS: number) {
+		super();
+	}
 
-	const ret = Object.assign(new Deferred<void>(), {
-		kill(asSuccess: boolean = false) {
-			clearTimeout(to);
-			if (asSuccess) {
-				ret.resolve(void 0);
-			} else {
-				ret.reject(void 0);
-			}
-		},
-	});
+	protected run(resolve: IResolver<void>, reject: IRejector<CancelError>): void {
+		this.to = setTimeout(() => {
+			resolve(void 0);
+		}, this.timeoutMS);
+	}
 
-	return ret;
+	cancel(asSuccess: boolean = false) {
+		clearTimeout(this.to);
+		if (asSuccess) {
+			this.resolve(void 0);
+		} else {
+			this.reject(new CancelError);
+		}
+	}
 }
