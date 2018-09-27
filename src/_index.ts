@@ -25,6 +25,12 @@ export { IAsyncWorker } from 'async/promise';
 export { Working } from 'async/working';
 //// - async/deferred
 export { Deferred } from 'async/deferred';
+//// - types/function
+export { TypedFunction } from 'types/function';
+export { NodeStyleCallback } from 'types/function';
+//// - async/promisify
+export { nfcall } from 'async/promisify';
+export { ninvoke } from 'async/promisify';
 //// - async/timer
 export { Timeout } from 'async/timer';
 //// - strings/pad
@@ -101,6 +107,8 @@ export { createErrorStackHint } from 'reflect/errorStackHint';
 //// - regexp/neverMatching
 //// - regexp/joinRegexp
 export { joinRegexp } from 'regexp/joinRegexp';
+//// - regexp/matchAll
+export { matchAll } from 'regexp/matchAll';
 //// - simple-data/moneyConverter
 export { MoneyConverter } from 'simple-data/moneyConverter';
 //// - strings/castCase
@@ -109,6 +117,8 @@ export { ucfirst } from 'strings/castCase';
 export { lcfirst } from 'strings/castCase';
 export { linux_case } from 'strings/castCase';
 export { linux_case_hyphen } from 'strings/castCase';
+//// - types/keyValue
+export { IKeyValue } from 'types/keyValue';
 /*
 {
     "baseIndentSize": 0,

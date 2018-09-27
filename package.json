@@ -2,9 +2,10 @@
 	"name": "@gongt/common",
 	"scripts": {
 		"watch": "export-all-in-one src && rollup -w -c build/rollup.config.js",
-		"build": "bash build/build.sh",
-		"lint": "tslint -c build/tslint.json 'src'",
-		"test:build": "rollup -c build/rollup.tests.js"
+		"build": "rimraf ./dist && rollup -c build/rollup.config.js && yon run build:exports && yon run build:test",
+		"// lint": "tslint -c build/tslint.json 'src'",
+		"build:test": "rollup -c build/rollup.tests.js",
+		"build:exports": "export-all-in-one \"src/tsconfig.json\" && export-all-in-one -c \"src/tsconfig.d.json\""
 	},
 	"main": "./dist/index.js",
 	"module": "./dist/index.module.js",
@@ -24,12 +25,14 @@
 		"chai": "^4.1.2",
 		"chokidar": "^2.0.4",
 		"glob": "^7.1.3",
+		"rimraf": "^2.6.2",
 		"rollup": "^0.65.0",
 		"rollup-plugin-commonjs": "^9.1.6",
 		"rollup-plugin-node-resolve": "^3.3.0",
 		"rollup-plugin-typescript2": "^0.17.0",
 		"source-map-support": "^0.5.9",
-		"typescript": "^3.0.3"
+		"typescript": "^3.0.3",
+		"yarn-or-npm": "^2.0.4"
 	},
 	"repository": {
 		"type": "git",
