@@ -1,5 +1,6 @@
 {
 	"name": "@gongt/common",
+	"version": "0.0.2",
 	"scripts": {
 		"watch": "export-all-in-one src && rollup -w -c build/rollup.config.js",
 		"build": "rimraf ./dist && rollup -c build/rollup.config.js && yon run build:exports && yon run build:test",
@@ -10,7 +11,6 @@
 	"main": "./dist/index.js",
 	"module": "./dist/index.module.js",
 	"typings": "./dist/_index.d.ts",
-	"version": "0.0.1",
 	"description": "a big hole",
 	"engines": {
 		"node": ">7",
