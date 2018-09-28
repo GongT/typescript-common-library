@@ -39,7 +39,7 @@ const moduleFile = pkg.module || resolve('dist/main.module.js');
 
 const commonOutput = {
 	sourcemap: true,
-	name: pkg.name.replace(/^@/, '').replace(/\//g, '__'),
+	name: 'Common',
 };
 
 const config = [
@@ -49,7 +49,7 @@ const config = [
 		external,
 		watch,
 		output: [
-			{file: mainFile, format: 'cjs', ...commonOutput},
+			{file: mainFile, format: 'umd', ...commonOutput},
 			{file: moduleFile, format: 'esm', ...commonOutput},
 		],
 	},

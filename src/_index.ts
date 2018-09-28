@@ -11,9 +11,22 @@ export { removeAll } from 'array/removeAll';
 export { removeOne } from 'array/removeOne';
 //// - async/awaitIterator
 export { awaitIterator } from 'async/awaitIterator';
+//// - types/dispose
+export { IDisposable } from 'types/dispose';
+export { toDisposable } from 'types/dispose';
+export { Disposable } from 'types/dispose';
+export { DisposedError } from 'types/dispose';
+//// - function/callback-list
+export { CallbackList } from 'function/callback-list';
+//// - async/event
+export { EmitEvent } from 'async/event';
+export { Emitter } from 'async/event';
+export { Bomb } from 'async/event';
 //// - async/cancelable
 export { Cancelable } from 'async/cancelable';
-export { CancelError } from 'async/cancelable';
+export { AbortError } from 'async/cancelable';
+export { CancellationController } from 'async/cancelable';
+export { CancellationToken } from 'async/cancelable';
 //// - async/promise
 export { IResolver } from 'async/promise';
 export { IRejector } from 'async/promise';
@@ -50,17 +63,25 @@ export { HMS } from 'datetime/dumpDate';
 export { posixPath } from 'environment/posixPath';
 //// - function/bodyOfFunc
 export { bodyOfFunc } from 'function/bodyOfFunc';
-//// - function/callback-list
-export { CallbackList } from 'function/callback-list';
+//// - function/removeComments
+export { removeComments } from 'function/removeComments';
 //// - function/isNoopFunc
 export { isNoopFunc } from 'function/isNoopFunc';
+export { noop } from 'function/isNoopFunc';
 //// - function/nameOfFunction
 export { nameOfConstructor } from 'function/nameOfFunction';
 export { nameOfFunc } from 'function/nameOfFunction';
 export { nameFuncAs } from 'function/nameOfFunction';
 export { renameFuncAs } from 'function/nameOfFunction';
 //// - network/fetch
-export { fetchJSON } from 'network/fetch';
+export { IMessage } from 'network/fetch';
+export { IRequestMessage } from 'network/fetch';
+export { IResponseMessage } from 'network/fetch';
+export { jsonApi } from 'network/fetch';
+//// - network/error
+export { HTTPError } from 'network/error';
+//// - network/asJSON
+export { asJSON } from 'network/asJSON';
 //// - objects/hiddenProperty
 export { hiddenProperty } from 'objects/hiddenProperty';
 //// - objects/inspect
@@ -81,8 +102,6 @@ export { hideGlobal } from 'pattern/hideGlobal';
 //// - reflect/getStackFrame
 export { getStackFrame } from 'reflect/getStackFrame';
 export { getStackFrames } from 'reflect/getStackFrame';
-//// - types/dispose
-export { IDisposable } from 'types/dispose';
 //// - pattern/monkeyPatch
 export { ArgEditor } from 'pattern/monkeyPatch';
 export { RetEditor } from 'pattern/monkeyPatch';
@@ -119,6 +138,8 @@ export { linux_case } from 'strings/castCase';
 export { linux_case_hyphen } from 'strings/castCase';
 //// - types/keyValue
 export { IKeyValue } from 'types/keyValue';
+export { MapFrom } from 'types/keyValue';
+
 /*
 {
     "baseIndentSize": 0,
