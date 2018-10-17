@@ -5,4 +5,4 @@ build/
 .gitignore
 .npmignore
 tests/
-.idea
+.tmp

@@ -12,3 +12,4 @@ src/_index.ts
 !.idea/modules.xml
 !.idea/codeStyles
 
+.tmp
